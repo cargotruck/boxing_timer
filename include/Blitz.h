@@ -25,7 +25,7 @@ public:
     int get_blitz();    
 
 private:
-    int multiplier = 5;
+    int multiplier = 3;
     int freq;
     int min;
     int max;

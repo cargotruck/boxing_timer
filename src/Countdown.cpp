@@ -140,15 +140,19 @@ void Countdown::run_clock()
 
 void Countdown::run_blitz()
 {
-    if(blitz_time == 0){
+    if(blitz_time == 0 && check_for_blitz <= 0){
         Blitz blitz{config.blitz_freq,config.blitz_min,config.blitz_max};
-        
-        if(blitz.is_blitz()) blitz_time = blitz.get_blitz();
+        check_for_blitz = MICRO;
+
+        if(blitz.is_blitz()) blitz_time = blitz.get_blitz() * MICRO;
+
+    }else{
+        check_for_blitz -= TENTH_SEC;
     }
 
     if(blitz_time > 0 && time > 1){
         blitz_bell.play();
-        --blitz_time;
+        blitz_time -= 100000;
     }
 }
 

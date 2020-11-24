@@ -10,9 +10,9 @@
 bool Blitz::is_blitz()
 {
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine generator(seed);
+    std::mt19937 generator(seed);
     std::uniform_int_distribution<int> distribution(1,100);
- 
+
     if(distribution(generator) < freq) {return true;}
 
     return false;
@@ -21,8 +21,8 @@ bool Blitz::is_blitz()
 int Blitz::get_blitz()
 {
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine generator(seed);
-    std::uniform_int_distribution<int> distribution(min,max + 1);
+    std::mt19937 generator(seed);
+    std::uniform_int_distribution<int> distribution(min,max);
     
     return distribution(generator); 
 }

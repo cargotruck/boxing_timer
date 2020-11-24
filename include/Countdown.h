@@ -43,6 +43,7 @@ private:
 
     bool active_round = true;
     int blitz_time = 0;
+    int check_for_blitz = MICRO;
     Clock_win* clock = nullptr;
     Timer_Util::Timer_Config config;
     bool is_paused = false;
